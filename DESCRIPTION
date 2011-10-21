@@ -5,6 +5,5 @@ Author: Stephanie Gogarten
 Description: Selected Affymetrix and Illlumina SNP data for HapMap subjects.  Data provided by the Center for Inherited Disease Research at Johns Hopkins University and the Broad Institute of MIT and Harvard University.
 Suggests: ncdf
 Maintainer: Stephanie Gogarten <sdmorris@u.washington.edu>
-License: GPL (>= 2)
+License: Artistic-2.0
 biocViews: ExperimentData, SNP, Microarray
-Packaged: 2011-08-30 17:09:33 UTC; stephanie
