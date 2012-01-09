@@ -4,10 +4,10 @@
 \alias{affy_snp_annot}
 \alias{illumina_scan_annot}
 \alias{illumina_snp_annot}
-\alias{affy_scan_ADF}
-\alias{affy_snp_ADF}
-\alias{illumina_scan_ADF}
-\alias{illumina_snp_ADF}
+\alias{affyScanADF}
+\alias{affySnpADF}
+\alias{illuminaScanADF}
+\alias{illuminaSnpADF}
 \docType{package}
 \title{
   Data used in the examples and vignettes of the GWASTools package.
@@ -44,9 +44,9 @@ nc <- open.ncdf(file)
 geno <- get.var.ncdf(nc, "genotype", start=c(1,1), count=c(10,5))
 close(nc)
 
-data(affy_scan_ADF) # ScanAnnotationDataFrame
-data(affy_snp_ADF) # SnpAnnotationDataFrame
-varMetadata(affy_snp_ADF)
+data(affyScanADF) # ScanAnnotationDataFrame
+data(affySnpADF) # SnpAnnotationDataFrame
+varMetadata(affySnpADF)
 }
 \keyword{package}
 \keyword{datasets}
