@@ -1,4 +1,5 @@
 \name{GWASdata-package}
+\alias{GWASdata}
 \alias{GWASdata-package}
 \alias{affy_scan_annot}
 \alias{affy_snp_annot}
@@ -33,20 +34,63 @@
   frames.  Genotype data and X and Y intensity data with quality scores
   are stored in NetCDF files.
   Text files with raw data are provided for 3 subjects.
+
+  List of datasets:
+  \itemize{
+    \item affy_scan_annot: data.frame with Affymetrix scan annotation
+    \item affy_snp_annot: data.frame with Affymetrix SNP annotation
+    \item affyScanADF: \code{\link{ScanAnnotationDataFrame}} with Affymetrix scan annotation
+    \item affySNPADF: \code{\link{SnpAnnotationDataFrame}} with Affymetrix
+    SNP annotation
+    \item illumina_scan_annot: data.frame with Illumina scan annotation
+    \item illumina_snp_annot: data.frame with Illumina SNP annotation
+    \item illuminaScanADF: \code{\link{ScanAnnotationDataFrame}} with Illumina scan annotation
+    \item illuminaSnpADF: \code{\link{SnpAnnotationDataFrame}} with Illumina
+    SNP annotation
+  }
+
+  List of files in "extdata":
+  \itemize{
+    \item affy_geno.nc: NetCDF file with Affymetrix genotypes
+    \item affy_qxy.nc: NetCDF file with Affymetrix XY intensity data and
+    quality scores
+    \item affy_raw_data: Directory with Affymetrix raw data in text
+    files
+    \item illumina_geno.nc: NetCDF file with Illumina genotypes
+    \item illumina_qxy.nc: NetCDF file with Illumina XY intensity data and
+    quality scores
+    \item illumina_bl.nc: NetCDF file with Illumina BAlleleFreq and
+    LogRRatio data
+    \item illumina_raw_data: Directory with Illumina raw data in text
+    files
+    \item illumina_subj.ped: PLINK PED file with Illumina genotypes
+    \item illumina_subj.map: PLINK MAP file with Illumina SNP info
+    \item illumina_subj.bim: PLINK extended MAP file with Illumina SNP
+    info and alleles
+  }
+}
+\seealso{
+  \code{\link{ScanAnnotationDataFrame}},
+  \code{\link{SnpAnnotationDataFrame}},
+  \code{\link{NcdfGenotypeReader}}, \code{\link{NcdfIntensityReader}},
+  \code{\link{GenotypeData}, \code{\link{IntensityData}}}
 }
 \examples{
 library(GWASdata)
-library(ncdf)
 data(affy_scan_annot)
 data(affy_snp_annot)
 file <- system.file("extdata", "affy_geno.nc", package="GWASdata")
-nc <- open.ncdf(file)
-geno <- get.var.ncdf(nc, "genotype", start=c(1,1), count=c(10,5))
-close(nc)
+nc <- NcdfGenotypeReader(file)
+geno <- getGenotype(nc, snp=c(1,10), scan=c(1,5))
 
 data(affyScanADF) # ScanAnnotationDataFrame
 data(affySnpADF) # SnpAnnotationDataFrame
 varMetadata(affySnpADF)
+
+genoData <- GenotypeData(nc, snpAnnot=affySnpADF, scanAnnot=affyScanADF)
+
+# raw data
+list.files(system.file("extdata", "affy_raw_data", package="GWASdata"))
 }
 \keyword{package}
 \keyword{datasets}
