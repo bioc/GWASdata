@@ -73,7 +73,7 @@
   \code{\link{ScanAnnotationDataFrame}},
   \code{\link{SnpAnnotationDataFrame}},
   \code{\link{NcdfGenotypeReader}}, \code{\link{NcdfIntensityReader}},
-  \code{\link{GenotypeData}, \code{\link{IntensityData}}}
+  \code{\link{GenotypeData}}, \code{\link{IntensityData}}
 }
 \examples{
 library(GWASdata)
