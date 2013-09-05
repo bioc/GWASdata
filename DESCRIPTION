@@ -4,6 +4,6 @@ Version: 1.0.9
 Author: Stephanie Gogarten
 Description: Selected Affymetrix and Illlumina SNP data for HapMap subjects.  Data provided by the Center for Inherited Disease Research at Johns Hopkins University and the Broad Institute of MIT and Harvard University.
 Depends: GWASTools
-Maintainer: Stephanie Gogarten <sdmorris@u.washington.edu>
+Maintainer: Stephanie Gogarten <sdmorris@u.washington.edu>, Adrienne Stilp <amstilp@u.washington.edu>
 License: Artistic-2.0
 biocViews: ExperimentData, SNP, Microarray
