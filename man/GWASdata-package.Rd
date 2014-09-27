@@ -61,6 +61,11 @@
     quality scores
     \item illumina_bl.nc: NetCDF file with Illumina BAlleleFreq and
     LogRRatio data
+    \item illumina_geno.gds: GDS file with Illumina genotypes
+    \item illumina_qxy.gds: GDS file with Illumina XY intensity data and
+    quality scores
+    \item illumina_bl.gds: GDS file with Illumina BAlleleFreq and
+    LogRRatio data
     \item illumina_raw_data: Directory with Illumina raw data in text
     files
     \item illumina_subj.ped: PLINK PED file with Illumina genotypes
@@ -73,24 +78,32 @@
   \code{\link{ScanAnnotationDataFrame}},
   \code{\link{SnpAnnotationDataFrame}},
   \code{\link{NcdfGenotypeReader}}, \code{\link{NcdfIntensityReader}},
+  \code{\link{GdsGenotypeReader}}, \code{\link{GdsIntensityReader}},
   \code{\link{GenotypeData}}, \code{\link{IntensityData}}
 }
 \examples{
 library(GWASdata)
-data(affy_scan_annot)
-data(affy_snp_annot)
-file <- system.file("extdata", "affy_geno.nc", package="GWASdata")
+data(illumina_scan_annot)
+data(illumina_snp_annot)
+
+data(illuminaScanADF) # ScanAnnotationDataFrame
+data(illuminaSnpADF) # SnpAnnotationDataFrame
+varMetadata(illuminaSnpADF)
+
+# NetCDF
+file <- system.file("extdata", "illumina_geno.nc", package="GWASdata")
 nc <- NcdfGenotypeReader(file)
 geno <- getGenotype(nc, snp=c(1,10), scan=c(1,5))
+genoData <- GenotypeData(nc, snpAnnot=illuminaSnpADF, scanAnnot=illuminaScanADF)
 
-data(affyScanADF) # ScanAnnotationDataFrame
-data(affySnpADF) # SnpAnnotationDataFrame
-varMetadata(affySnpADF)
-
-genoData <- GenotypeData(nc, snpAnnot=affySnpADF, scanAnnot=affyScanADF)
+# GDS
+file <- system.file("extdata", "illumina_geno.gds", package="GWASdata")
+gds <- GdsGenotypeReader(file)
+geno <- getGenotype(gds, snp=c(1,10), scan=c(1,5))
+genoData <- GenotypeData(gds, snpAnnot=illuminaSnpADF, scanAnnot=illuminaScanADF)
 
 # raw data
-list.files(system.file("extdata", "affy_raw_data", package="GWASdata"))
+list.files(system.file("extdata", "illumina_raw_data", package="GWASdata"))
 }
 \keyword{package}
 \keyword{datasets}
