@@ -1,6 +1,6 @@
 Package: GWASdata
 Title: Data used in the examples and vignettes of the GWASTools package
-Version: 1.14.0
+Version: 1.15.0
 Author: Stephanie Gogarten
 Description: Selected Affymetrix and Illlumina SNP data for HapMap subjects.  Data provided by the Center for Inherited Disease Research at Johns Hopkins University and the Broad Institute of MIT and Harvard University.
 Depends: GWASTools
